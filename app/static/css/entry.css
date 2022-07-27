@@ -1,0 +1,301 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Styling begins here */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#circleshape {
+    border: 5px transparent;
+    width: 305px;
+    height: 305px;
+    border-radius: 100%;
+    max-width: 305px;
+    max-height: 305px;
+    position: relative;
+    background-color: aliceblue;
+}
+
+.eyebrow {
+    border-color: #000 transparent transparent;
+    width: 100px;
+    height: 70px;
+    border-bottom: 17px solid #023047;
+    border-radius: 20px 10px 10px 100%;
+    box-shadow: 1em 0.1em 1.5em -0.5em #4a4e69 inset;
+    position: absolute;
+    top: 55px;
+    right: 150px;
+    transform: rotateZ(160deg);
+}
+
+#eyebrow1 {
+    transform: rotateX(190deg);
+    left: 10px
+
+}
+#eyebrow2 {
+    transform: rotate(180deg);
+    right: 10px;
+
+}
+
+.eyebrowmid {
+    width: 19px;
+    height: 28px;
+    background-color: #023047;
+    position: absolute;
+}
+
+
+
+#eyebrowmid1 {
+    top: 43px;
+    left: 180px;
+    border-bottom: 20px solid #023047;
+    border-radius: 5px 0 0 100%;
+    transform: rotateZ(100deg) skew(20deg);
+}
+#eyebrowmid2 {
+    top: 59px;
+    left: 90px;
+    height: 16px;
+    width: 18px;;
+    border-left: 18px solid #023047;
+    border-radius: 0 100% 0 0;
+    transform: rotate(10deg) skew(20deg)
+}
+
+.eyelidunder {
+    border: solid 1px;
+    border-color: #023047 transparent transparent;
+    width: 145px;
+    height: 125px;
+    border-radius: 100%;
+    position: absolute;
+    top: 70px;
+    right: 150px;
+}
+#eyelidunder1 {
+    box-shadow: 1em 2em 3em -2em inset #4a4e69;
+    top: 130px;
+}
+#eyelidunder2 {
+    box-shadow: -1em 2em 3em -2em inset #4a4e69;
+    left: 150px;
+    top: 130px;
+}
+
+.eyelid1 {
+    border: solid 4px;
+    border-color: #000 transparent transparent;
+    width: 150px;
+    height: 200px;
+    border-radius: 50%/200px 200px 0 0;
+    position: absolute;
+    top: 100px;
+    left: -5px;
+}
+.eyelid2 {
+    border: solid 4px;
+    border-color: #000 transparent transparent;
+    width: 150px;
+    height: 200px;
+    border-radius: 50%/200px 200px 0 0;
+    position: absolute;
+    top: 100px;
+    right: -5px;
+}
+
+.eye {
+    border-radius: 100%;
+    border: 2px solid black;
+    width: 27px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.5em 0.5em -0.4em;
+    position: relative;
+    top: 70px;
+    left: 10px;
+    background-color: #efebce;
+}
+
+.iris {
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: relative;
+    bottom: 5px;
+}
+
+.eyeball1 {
+    display: flex;
+    position: relative;
+    left: 50px;
+    top: 32px;
+}
+
+.eyeball2 {
+    display: flex;
+    position: relative;
+    left: 200px;
+}
+
+.mouth {
+    width: 125px;
+    height: 60px;
+    background-color: black;
+    position: relative;
+    border-bottom: 4px solid grey;
+}
+#mouth1 {
+    left: 130px;
+    top: 120px;
+    transform: rotateX(180deg) skewY(15deg);
+    border-radius: 20px 25px 100px 50%/100px;
+}
+#mouth2 {
+    left: 50px;
+    top: 60px;
+    transform: skewY(20deg);
+    border-radius: 50%/100px 25px 100px 20px;
+}
+.tooth {
+    border-radius: 0 0 10px 10px;
+    width: 30px;
+    height: 25px;
+    background-color: #faf9f9;
+    position: absolute;
+    top: 40px
+}
+#tooth1 {
+    top: 183px;
+    left: 100px;
+    transform: rotate(15deg);
+}
+#tooth2 {
+    top: 184px;
+    left: 170px;
+    transform: rotate(-15deg);
+}
+
+.tongue {
+    background-color: pink;
+    width: 60px;
+    height: 40px;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 42px;
+    left: 120px;
+    border: 1px solid black;
+}
+
+.nose {
+    border-radius: 100%;
+    background-color: #dce6f1;
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    bottom: 105px;
+    left: 125px;
+    border-bottom: 1px solid black
+}
+#nose1 {
+    width: 40px;
+    height: 20px;
+    left: 105px;
+    bottom: 115px;
+    background-color: #dee2e6;
+    border: 1px solid black;
+    border-top: none;
+}
+#nose2 {
+    width: 40px;
+    height: 20px;
+    left: 150px;
+    bottom: 115px;
+    background-color: #dee2e6;
+    border: 1px solid black;
+    border-top: none;
+}
+
+a {
+    background-color: #000;
+    text-decoration: none;
+    position: absolute;
+    bottom: 240px;
+    font-family: "Diplomata SC", cursive;
+    background: none;
+    color: white;
+    padding: 1em 2em;
+    font-size: 2em;
+    transition: color 0.25s, text-shadow 0.25s, transform 0.25s; /*specifying is always best*/
+}
+a:hover {
+    color: white;
+    text-shadow:0 1em 0 #c0fdff; /* syntax is "x-offset | y-offset | blur radius | color" */
+    transform: translateY(0.25em);
+    cursor: pointer;
+}
+
+
+
+
+
+
+

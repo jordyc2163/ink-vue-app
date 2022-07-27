@@ -1,0 +1,12 @@
+<form method="POST" action="{{ url_for('site.admin_delete') }}">
+    {{ deleteform.hidden_tag() }}
+    <div class="delete-form-group">
+        <fieldset id="string-field">
+            {{ deleteform.pending_id.label }}
+            {{ deleteform.pending_id (class = "string-field") }}
+        </fieldset>
+
+        <!-- Submit Button -->
+        {{ deleteform.submit (class = "form-submit-button") }}
+    </div>
+</form>

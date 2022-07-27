@@ -1,0 +1,14 @@
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <fieldset id="signin-email-field">
+        {{ form.email.label }}
+        {{ form.email(class = "form-control", placeholder = "Enter your email") }}
+    </fieldset>
+    <fieldset id="signin-pass-field">
+        {{ form.password.label }}
+        {{ form.password(class = "form-control", placeholder = "Enter password") }}
+    </fieldset>
+
+    <!-- Submit Button -->
+    {{ form.submit_button(class = "form-submit-button btn btn-primary") }}
+</form>

@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- Home section -->
+
+<section id="home">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+                <h1 class="wow fadeInUp" data-wow-delay="0.6s">Discovery made easier</h1>
+                <p class="wow fadeInUp" data-wow-delay="0.9s">A passion project still in the making, easily browse
+                    Tattoo Artists. You may also register to be displayed in the Gallery as an Artist. Hope you enjoy.
+                    Thank you.</p>
+                <a href="#about" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Learn
+                    more</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- About section -->
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-9 col-sm-8 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="about-thumb">
+                    <h1>Background</h1>
+                    <p>Welcome to my page. The thought behind this came from my fascination of art and the artform of
+                        tattooing. There are many talented artists in the world and many people wanting their
+                        masterpeice and appreciation as a permanent part of themselves. However you appreciate work, I
+                        noticed people struggle with finding artists, relying on word of mouth or hours of research. I
+                        hope to allow visitors the chance to explore tattoo artists all around the world, while viewing
+                        their work seamlessly, skipping the labor of research. Here I hope, whether as a customer or an
+                        artist, your favorite piece can come to fruition and recognition is in your art achieved
+                        respectively. Thank you for visiting.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-4 wow fadeInUp about-img" data-wow-delay="0.6s">
+                <img src="../../static/images/background_icon.jpg" class="img-responsive img-circle" alt="About">
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="section-title text-center">
+                    <h1>Featured this Month</h1>
+                    <h3>Talent is only the tip of the iceburg.</h3>
+                </div>
+            </div>
+
+            <!-- team carousel -->
+            <div id="team-carousel" class="owl-carousel">
+
+                <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-thumb">
+                        <div class="image-holder">
+                            <img src="../../static/images/henry_profile.png" class="img-responsive img-circle"
+                                alt="Big Henry">
+                        </div>
+                        <h2 class="heading">Big Henry</h2>
+                        <p class="description">Aliquam ac justo est. Praesent feugiat cursus est.</p>
+                    </div>
+                </div>
+
+                <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="team-thumb">
+                        <div class="image-holder">
+                            <img src="../../static/images/sedda_profile.png" class="img-responsive img-circle"
+                                alt="Piettro Sedda">
+                        </div>
+                        <h2 class="heading">Pietro Sedda</h2>
+                        <p class="description">Maecenas sed diam eget risus varius blandit sit non.</p>
+                    </div>
+                </div>
+
+                <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="team-thumb">
+                        <div class="image-holder">
+                            <img src="../../static/images/caleb_profile.png" class="img-responsive img-circle"
+                                alt="Caleb Lansett">
+                        </div>
+                        <h2 class="heading">Caleb Lansett</h2>
+                        <p class="description">Phasellus nec ante in nunc molestie tincidunt ut eu diam.</p>
+                    </div>
+                </div>
+
+            
+            <!-- end team carousel -->
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Gallery section -->
+
+<section id="gallery">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-offset-2 col-md-8 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="section-title">
+                    <h1>Gallery</h1>
+                    <p>Nullam scelerisque, quam nec iaculis vulputate, arcu ligula sollicitudin nisl, ac volutpat
+                        erat nulla a arcu.</p>
+                </div>
+            </div>
+
+            <ul class="grid cs-style-4">
+                <li class="col-md-6 col-sm-6">
+                    <figure>
+                        <div><img src="../../static/images/traditional.webp" alt="image 1" class="gallery-image"></div>
+                        <figcaption>
+                            <h1>Traditional</h1>
+                            <small>Cum sociis natoque penatibus et magnis dis parturient montes.</small>
+                            <a href="{{ url_for('site.gallery', category='traditional') }}">View Artists</a>
+                        </figcaption>
+                    </figure>
+                </li>
+
+                <li class="col-md-6 col-sm-6">
+                    <figure>
+                        <div><img src="../../static/images/japanese.avif" alt="image 2" class="gallery-image"></div>
+                        <figcaption>
+                            <h1>Japanese</h1>
+                            <small>Suspendisse venenatis quam sed libero euismod feugiat.</small>
+                            <a href="{{ url_for('site.gallery', category='japanese') }}">View Artists</a>
+                        </figcaption>
+                    </figure>
+                </li>
+
+                <li class="col-md-6 col-sm-6">
+                    <figure>
+                        <div><img src="../../static/images/realism.png" alt="image 3" class="gallery-image"></div>
+                        <figcaption>
+                            <h1>Realism</h1>
+                            <small>Aenean urna massa, convallis vehicula velit et, dictum pellentesque nisi.</small>
+                            <a href="{{ url_for('site.gallery', category='realism') }}">View Artists</a>
+                        </figcaption>
+                    </figure>
+                </li>
+
+                <li class="col-md-6 col-sm-6">
+                    <figure>
+                        <div><img src="../../static/images/surrealism.jpeg" alt="image 4" class="gallery-image"></div>
+                        <figcaption>
+                            <h1>Surrealism</h1>
+                            <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+                            <a href="{{ url_for('site.gallery', category='surrealism') }}">View Artists</a>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="col-md-6 col-sm-6">
+                    <figure>
+                        <div><img src="../../static/images/abstract.png" alt="image 4" class="gallery-image"></div>
+                        <figcaption>
+                            <h1>Abstract</h1>
+                            <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+                            <a href="{{ url_for('site.gallery', category='abstract') }}">View Artists</a>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="col-md-6 col-sm-6">
+                    <figure>
+                        <div><img src="../../static/images/minimalism.jpeg" alt="image 4" class="gallery-image"></div>
+                        <figcaption>
+                            <h1>Minimalism</h1>
+                            <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+                            <a href="{{ url_for('site.gallery', category='minimalism') }}">View Artists</a>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="col-md-6 col-sm-6">
+                    <figure>
+                        <div><img src="../../static/images/blackwork.jpeg" alt="image 4" class="gallery-image"></div>
+                        <figcaption>
+                            <h1>Blackwork</h1>
+                            <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+                            <a href="{{ url_for('site.gallery', category='blackwork') }}">View Artists</a>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="col-md-6 col-sm-6">
+                    <figure>
+                        <div><img src="../../static/images/geometric.jpeg" alt="image 4" class="gallery-image"></div>
+                        <figcaption>
+                            <h1>Geometric</h1>
+                            <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+                            <a href="Geometric">View Artists</a>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact section -->
+
+<section id="contact">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-offset-1 col-md-10 col-sm-12">
+
+                <div class="col-lg-offset-1 col-lg-10 section-title wow fadeInUp" data-wow-delay="0.4s">
+                    <h1>Send a message</h1>
+                    <p>Nunc suscipit ante in lectus laoreet, nec pharetra diam dictum. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. </p>
+                </div>
+
+                {% include "feedback_form.html" %}
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

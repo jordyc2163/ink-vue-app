@@ -1,0 +1,37 @@
+<form method="POST" action="{{ url_for('site.admin_accept') }}">
+    {{ acceptform.hidden_tag() }}
+    <div class="accept-form-group">
+        <fieldset id="string-field">
+            {{ acceptform.image.label }}
+            {{ acceptform.image (class = "string-field") }}
+        </fieldset>
+        <fieldset id="string-field">
+            {{ acceptform.nickname.label }}
+            {{ acceptform.nickname (class = "string-field") }}
+        </fieldset>
+        <fieldset id="string-field">
+            {{ acceptform.social.label }}
+            {{ acceptform.social (class = "string-field") }}
+        </fieldset>
+        <fieldset id="string-field">
+            {{ acceptform.email.label }}
+            {{ acceptform.email (class = "string-field") }}
+        </fieldset>
+        <fieldset id="string-field">
+            {{ acceptform.country.label }}
+            {{ acceptform.country (class = "string-field") }}
+        </fieldset>
+        <fieldset id="string-field">
+            {{ acceptform.category.label }}
+            {{ acceptform.category (class = "string-field") }}
+        </fieldset>
+        <fieldset id="string-field">
+            {{ acceptform.user_id.label }}
+            {{ acceptform.user_id (class = "string-field") }}
+        </fieldset>
+     
+
+        <!-- Submit Button -->
+        {{ acceptform.submit (class = "form-submit-button") }}
+    </div>
+</form>

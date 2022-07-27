@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if artist %}
+<div class="container artist-container">
+    <h1>Artist</h1>
+    <img src="{{ artist.image }}">
+    <h3>{{ artist.nickname }}</h3>
+    <p>Add to Watchlist?</p>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <fieldset id="choice-field">
+            {{ form.add_artist (class = "radio-field") }}
+        </fieldset>
+        {{ form.submit_button (class = "form-submit-button") }}
+    </form>
+</div>
+
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,35 @@
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="register-form-group">
+        <fieldset id="image-field">
+            {{ form.image.label }}
+            {{ form.image (class = "image-field") }}
+        </fieldset>
+        <fieldset id="description-field">
+            {{ form.description.label (class = "description-field") }}
+        </fieldset>
+        <fieldset id="email-field">
+            {{ form.email.label }}
+            {{ form.email(class = "form-control", placeholder = "Enter Business Email") }}
+        </fieldset>
+        <fieldset id="name-field">
+            {{ form.nickname.label }}
+            {{ form.nickname (class = "form-name-control") }}
+        </fieldset>
+        <fieldset id="name-field">
+            {{ form.social.label }}
+            {{ form.social (class = "form-name-control", placeholder = "exclude '@' -> inkVue") }}
+        </fieldset>
+        <fieldset id="category-field">
+            {{ form.category.label }}
+            {{ form.category (class = "select-field") }}
+        </fieldset>
+        <fieldset id="country-field">
+            {{ form.country.label }}
+            {{ form.country (class = "select-field") }}
+        </fieldset>
+
+        <!-- Submit Button -->
+        {{ form.submit_button (class = "form-submit-button") }}
+    </div>
+</form>
