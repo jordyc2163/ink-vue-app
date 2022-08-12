@@ -4,33 +4,40 @@
 <div class="container profile-container">
     <h1>Profile</h1>
     <h2>My Saved Artists</h2>
-    <div class="table-responsive">
-        <table class="table table-sm table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Business Email</th>
-                    <th scope="col">Instagram</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for artist in artists %}
+    <form method="POST" action="{{ url_for('auth.profile_delete') }}">
+        <div class="table-responsive">
+            <table class="table table-sm table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Business Email</th>
+                        <th scope="col">Instagram</th>
+                        <th scope="col">Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for artist in artists %}
 
-                <tr>
-                    <th scope="row">{{ loop.index }}</th>
-                    <td>{{ artist.nickname }}</td>
-                    <td>{{ artist.country }}</td>
-                    <td>{{ artist.email }}</td>
-                    <td><a href="https://www.instagram.com/{{ artist.social }}/?hl=en" target="_blank">@{{ artist.social }}</a></td>
-                </tr>
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ artist.nickname }}</td>
+                        <td>{{ artist.country }}</td>
+                        <td>{{ artist.email }}</td>
+                        <td><a href="https://www.instagram.com/{{ artist.social }}/?hl=en" target="_blank">@{{
+                                artist.social }}</a></td>
+                        <td><input type="radio" value="{{ artist.id }}" name="saved_artist"></td>
+                    </tr>
 
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            {% include 'delete_saved.html' %}
+        </div>
+    </form>
     {% if email == admin_email %}
     <button class="btn btn-default"><a href="{{ url_for('site.admin') }}">Admin Stuff</a></button>
     {% endif %}

@@ -165,7 +165,11 @@ def delete_pending(id):
 # Delete Favorites
 @api.route('/favorite/<user_id>/<artist_id>', methods=['DELETE'])
 def delete_favorite(user_id, artist_id):
-    db.session.query(Favorite).filter(Favorite.user_id ==
-                                      user_id, Favorite.artist_id == artist_id).delete()
+    artist = db.session.query(Favorite).filter(Favorite.user_id == user_id, Favorite.artist_id == artist_id).first()
 
+    db.session.delete(artist)
     db.session.commit()
+    
+    response = favorite_schema.dump(artist)
+
+    return jsonify(response)

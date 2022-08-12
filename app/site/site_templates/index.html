@@ -15,7 +15,7 @@
                 <p class="wow fadeInUp" data-wow-delay="0.9s">A passion project still in the making, easily browse
                     Tattoo Artists. You may also register to be displayed in the Gallery as an Artist. Hope you enjoy.
                     Thank you.</p>
-                <a href="#about" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Learn
+                <a href="{{ url_for('site.register') }}" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Learn
                     more</a>
             </div>
 
@@ -207,7 +207,7 @@
                             <small>Geometric tattoos draw their simplicity from the use of common shapes | lines,
                                 circles squares, triangles | Joint together, form beautiful and intricate patterns that
                                 adorn so many tattoo lovers around the world.</small>
-                            <a href="Geometric">View Artists</a>
+                            <a href="{{ url_for('site.gallery', category='geometric') }}">View Artists</a>
                         </figcaption>
                     </figure>
                 </li>

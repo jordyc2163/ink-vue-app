@@ -1,8 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from app.forms import UserSignInForm, UserSignUpForm
+from app.forms import UserSignInForm, UserSignUpForm, DeletePending
 from app.models import User, db, check_password_hash, Favorite, Artist
 from flask_login import login_user, logout_user, login_required, current_user
 from config import Config
+from app.api.routes import delete_favorite
 
 auth = Blueprint('auth', __name__, template_folder='auth_templates')
 
@@ -59,7 +60,12 @@ def profile():
     print(current_user.email)
     email = current_user.email
     admin_email = Config.ADMIN_EMAIL
-    return render_template('profile.html', artists = artists, email = email, admin_email = admin_email)
+
+    deleteform = DeletePending(request.form)
+    deleteform.submit.label.text = 'Delete'
+
+    
+    return render_template('profile.html', artists = artists, email = email, admin_email = admin_email, deleteform = deleteform)
 
 @auth.route('/logout')
 @login_required
@@ -69,3 +75,39 @@ def logout():
     print("you are now logged out")
     return redirect(url_for('site.home'))
 
+
+
+# User route for deleting saved artists
+
+@auth.route('/profile/delete', methods=["GET", "POST"])
+@login_required
+def profile_delete():
+    try:
+        subquery = db.session.query(Favorite.artist_id).filter(Favorite.user_id == current_user.id)
+        print(subquery)
+        artists = db.session.query(Artist).filter(Artist.id.in_(subquery))
+        print(artists)
+
+        print(current_user.email)
+        email = current_user.email
+        admin_email = Config.ADMIN_EMAIL
+
+
+        deleteform = DeletePending(request.form)
+        deleteform.submit.label.text = 'Delete'
+        
+        if deleteform.validate_on_submit():
+            artist_id = request.form["saved_artist"]
+            print(artist_id)
+            print(current_user.id)
+
+            delete_favorite(current_user.id, artist_id)
+            return redirect(url_for('auth.profile'))
+        else:
+            print("uh oh")
+
+        return render_template('profile.html', artists = artists, email = email, admin_email = admin_email, deleteform = deleteform)
+    except:
+        print("couldn't run page")
+        return redirect(url_for('auth.profile'))
+    

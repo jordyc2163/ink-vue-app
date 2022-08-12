@@ -145,59 +145,65 @@ def admin():
 @site.route('/admin/accept', methods=['GET','POST'])
 @login_required
 def admin_accept():
-    email = current_user.email
-    admin_email = Config.ADMIN_EMAIL
+    try:
+        email = current_user.email
+        admin_email = Config.ADMIN_EMAIL
 
-    if email == admin_email:
-        pending = Pending.query.all()
-        acceptform = AcceptPending(request.form)
-        deleteform = DeletePending(request.form)
+        if email == admin_email:
+            pending = Pending.query.all()
+            acceptform = AcceptPending(request.form)
+            deleteform = DeletePending(request.form)
 
-        if acceptform.validate_on_submit():
-            image = acceptform.image.data
-            email = acceptform.email.data
-            nickname = acceptform.nickname.data
-            category = acceptform.category.data
-            country = acceptform.country.data
-            social = acceptform.social.data
-            user_id = acceptform.user_id.data
+            if acceptform.validate_on_submit():
+                image = acceptform.image.data
+                email = acceptform.email.data
+                nickname = acceptform.nickname.data
+                category = acceptform.category.data
+                country = acceptform.country.data
+                social = acceptform.social.data
+                user_id = acceptform.user_id.data
 
-            artist = Artist(image, email, nickname, category, country, social, user_id)
+                artist = Artist(image, email, nickname, category, country, social, user_id)
 
-            db.session.add(artist)
-            db.session.commit()
+                db.session.add(artist)
+                db.session.commit()
 
-            delete_pending(user_id)
+                delete_pending(user_id)
 
-            return redirect(url_for('site.admin'))
+                return redirect(url_for('site.admin'))
+            else:
+                print("something not right on accept")
+
+            return render_template('admin.html', pending_artists = pending, acceptform = acceptform, deleteform = deleteform)
         else:
-            print("something not right on accept")
-
-        return render_template('admin.html', pending_artists = pending, acceptform = acceptform, deleteform = deleteform)
-    else:
-        return redirect(url_for('site.home'))
+            return redirect(url_for('site.home'))
+    except:
+        return redirect(url_for('site.admin'))
 
 @site.route('/admin/delete', methods=['GET', 'POST'])
 @login_required
 def admin_delete():
-    email = current_user.email
-    admin_email = Config.ADMIN_EMAIL
+    try:
+        email = current_user.email
+        admin_email = Config.ADMIN_EMAIL
 
-    if email == admin_email:
-        pending = Pending.query.all()
-        acceptform = AcceptPending(request.form)
-        deleteform = DeletePending(request.form)
+        if email == admin_email:
+            pending = Pending.query.all()
+            acceptform = AcceptPending(request.form)
+            deleteform = DeletePending(request.form)
 
 
-        if deleteform.validate_on_submit():
-            pending_id = deleteform.pending_id.data
+            if deleteform.validate_on_submit():
+                pending_id = deleteform.pending_id.data
 
-            delete_pending(pending_id)
-            return redirect(url_for('site.admin'))
+                delete_pending(pending_id)
+                return redirect(url_for('site.admin'))
+            else:
+                print("something not right on delete")
+
+            return render_template('admin.html', pending_artists = pending, acceptform = acceptform, deleteform = deleteform)
         else:
-            print("something not right on delete")
-
-        return render_template('admin.html', pending_artists = pending, acceptform = acceptform, deleteform = deleteform)
-    else:
-        return redirect(url_for('site.home'))
+            return redirect(url_for('site.home'))
+    except:
+        return redirect(url_for('site.admin'))
 
