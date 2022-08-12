@@ -39,3 +39,42 @@
     display: flex;
     justify-content: space-around;
 }
+
+#emailHelp {
+    font-size: 15px;
+
+    letter-spacing: normal;
+}
+
+#name-field {
+    margin: 5px
+}
+
+#email-field {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#pass-field {
+    margin-bottom: 10px;
+}
+
+.form-submit-button {
+    margin-top: 5px;
+}
+
+.signup-input {
+    width: 50%;
+}
+
+.artistyn-input {
+    width: 10%;
+}
+
+.name-input {
+    width: 25%;
+}
+
+.admin-container {
+    width: 100%;
+}

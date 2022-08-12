@@ -1,13 +1,20 @@
 <form method="POST">
     {{ form.hidden_tag() }}
-    <fieldset id="signin-email-field">
-        {{ form.email.label }}
-        {{ form.email(class = "form-control", placeholder = "Enter your email") }}
-    </fieldset>
-    <fieldset id="signin-pass-field">
-        {{ form.password.label }}
-        {{ form.password(class = "form-control", placeholder = "Enter password") }}
-    </fieldset>
+    
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <fieldset id="signin-email-field">
+            {{ form.email(class = "form-control", placeholder = "Enter your email") }}
+        </fieldset>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <fieldset id="signin-pass-field">
+            {{ form.password(class = "form-control", placeholder = "Enter password") }}
+        </fieldset>
+        </div>
+      
+    
 
     <!-- Submit Button -->
     {{ form.submit_button(class = "form-submit-button btn btn-primary") }}
