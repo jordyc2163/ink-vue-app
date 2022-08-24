@@ -7,6 +7,7 @@ from app.api.routes import delete_favorite
 
 auth = Blueprint('auth', __name__, template_folder='auth_templates')
 
+
 @auth.route('/signin', methods=["GET", "POST"])
 def signin():
     form = UserSignInForm()
@@ -25,8 +26,9 @@ def signin():
         else:
             print("form not valid")
     except:
-        raise 
+        raise
     return render_template('signin.html', form=form)
+
 
 @auth.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -39,20 +41,28 @@ def signup():
             last_name = form.last_name.data
             artist = form.artist.data
 
-            user = User(email, password, first_name, last_name, artist)
-            db.session.add(user)
-            db.session.commit()
+            if User.query.filter_by(email=email).first():
+                print("User already exists")
+                return redirect(url_for('auth.signup'))
+            else:
+                print("succesffuly signed up")
+                db.session.query
+                user = User(email, password, first_name, last_name, artist)
+                db.session.add(user)
+                db.session.commit()
 
-            return redirect(url_for('auth.signin'))
+                return redirect(url_for('auth.signin'))
     except:
         raise
 
     return render_template('signup.html', form=form)
 
+
 @auth.route('/profile', methods=["GET"])
 @login_required
 def profile():
-    subquery = db.session.query(Favorite.artist_id).filter(Favorite.user_id == current_user.id)
+    subquery = db.session.query(Favorite.artist_id).filter(
+        Favorite.user_id == current_user.id)
     print(subquery)
     artists = db.session.query(Artist).filter(Artist.id.in_(subquery))
     print(artists)
@@ -64,8 +74,8 @@ def profile():
     deleteform = DeletePending(request.form)
     deleteform.submit.label.text = 'Delete'
 
-    
-    return render_template('profile.html', artists = artists, email = email, admin_email = admin_email, deleteform = deleteform)
+    return render_template('profile.html', artists=artists, email=email, admin_email=admin_email, deleteform=deleteform)
+
 
 @auth.route('/logout')
 @login_required
@@ -76,14 +86,14 @@ def logout():
     return redirect(url_for('site.home'))
 
 
-
 # User route for deleting saved artists
 
 @auth.route('/profile/delete', methods=["GET", "POST"])
 @login_required
 def profile_delete():
     try:
-        subquery = db.session.query(Favorite.artist_id).filter(Favorite.user_id == current_user.id)
+        subquery = db.session.query(Favorite.artist_id).filter(
+            Favorite.user_id == current_user.id)
         print(subquery)
         artists = db.session.query(Artist).filter(Artist.id.in_(subquery))
         print(artists)
@@ -92,10 +102,9 @@ def profile_delete():
         email = current_user.email
         admin_email = Config.ADMIN_EMAIL
 
-
         deleteform = DeletePending(request.form)
         deleteform.submit.label.text = 'Delete'
-        
+
         if deleteform.validate_on_submit():
             artist_id = request.form["saved_artist"]
             print(artist_id)
@@ -106,8 +115,7 @@ def profile_delete():
         else:
             print("uh oh")
 
-        return render_template('profile.html', artists = artists, email = email, admin_email = admin_email, deleteform = deleteform)
+        return render_template('profile.html', artists=artists, email=email, admin_email=admin_email, deleteform=deleteform)
     except:
         print("couldn't run page")
         return redirect(url_for('auth.profile'))
-    
